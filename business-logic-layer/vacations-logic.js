@@ -70,7 +70,7 @@ async function deleteVacationAsync(id) {
     const sql = `SELECT imageFileName from vacations WHERE vacationId=${id}`;
     const response = await dal.executeAsync(sql);
     let absolutePath;
-    if (response[0].imageFileName.length)
+    if (response[0].imageFileName)
         absolutePath = path.join(__dirname, "..", "images", response[0].imageFileName);
     if (await fs.existsSync(absolutePath)) await fs.unlinkSync(absolutePath);
     const sqlDelete = `DELETE FROM vacations WHERE vacationId=${id}`;
