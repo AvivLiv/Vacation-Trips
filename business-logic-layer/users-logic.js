@@ -12,7 +12,7 @@ async function updateUserAsync(user) {
     const sql = `UPDATE users SET firstName = '${user.firstName}', lastName = '${user.lastName}'
     , userName = '${user.userName}' WHERE userId = '${user.userId}'`;
     const info = await dal.executeAsync(sql);
-    const updatedUser = getOneUserByIdAsync(user.userId);
+    const updatedUser = await getOneUserByIdAsync(user.userId);
     delete updatedUser.password;
     updatedUser.token = jwtHelper.getNewToken({ updatedUser });
     return info.affectedRows === 0 ? null : updatedUser;
