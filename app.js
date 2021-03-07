@@ -13,6 +13,8 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 server.use(fileUpload());
+server.use(express.static(path.join(__dirname, "./frontend")));
+
 
 server.use("/api/vacations", vacationsControllers);
 server.use("/api/auth", authControllers);
@@ -24,6 +26,8 @@ server.use("*", (request, response) => {
 });
 
 const port = process.env.PORT || 3001;
+
+
 
 const expressListener = server.listen(port, () => console.log("Listening...."));
 socketHelper.init(expressListener);
