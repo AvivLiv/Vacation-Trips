@@ -1,0 +1,10 @@
+{
+    "isProduction": true,
+    "isDevelopment": false,
+    "mysql":{
+        "host":"eu-cdbr-west-03.cleardb.net",
+        "user":"bed630e833584b",
+        "password":"c8d3d7c8",
+        "database":"heroku_7c4f8fe015ab93e"
+    }
+}
