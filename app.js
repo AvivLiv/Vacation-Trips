@@ -7,7 +7,7 @@ const authControllers = require("./controllers-layer/auth-controllers");
 const usersControllers = require("./controllers-layer/user-controllers");
 const followsControllers = require("./controllers-layer/follows-controllers");
 const socketHelper = require("./helpers/socket-helper");
-const path=require("path");
+const path = require("path");
 
 const server = express();
 server.use(cors());
@@ -23,7 +23,7 @@ server.use("*", (request, response) => {
     response.sendFile(path.join(__dirname, "./frontend/index.html"))
 });
 
-const port=process.env.PORT||3001;
+const port = process.env.PORT || 3001;
 
 const expressListener = server.listen(port, () => console.log("Listening...."));
 socketHelper.init(expressListener);
