@@ -5,7 +5,7 @@ const errorHelper = require("../helpers/errors-helper");
 const verifyLogin = require("../middleware/verify-login")
 
 // Update user by id
-router.patch("/update/:userId", verifyLogin, async (request, response) => {
+router.put("/update/:userId", verifyLogin, async (request, response) => {
     try {
         const userId = request.params.userId;
         request.body.userId = userId;
