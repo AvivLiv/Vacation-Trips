@@ -4,7 +4,7 @@ function getError(err) {
         return "Some error occurred, please try again.";
     }
     return err.message;
-}
+};
 
 module.exports = {
     getError

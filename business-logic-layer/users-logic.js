@@ -1,11 +1,12 @@
 const dal = require("../database-access-layer/dal");
 const jwtHelper = require("../helpers/jwt-helper");
 
-async function getOneUserByIdAsync(userId){
+// Get user by id
+async function getOneUserByIdAsync(userId) {
     const sql = `select * from users WHERE userId = ?`;
-    const user = await dal.executeAsync(sql,[userId]);
+    const user = await dal.executeAsync(sql, [userId]);
     return user[0];
-}
+};
 
 // Update user by id
 async function updateUserAsync(user) {
@@ -16,7 +17,7 @@ async function updateUserAsync(user) {
     delete updatedUser.password;
     updatedUser.token = jwtHelper.getNewToken({ updatedUser });
     return info.affectedRows === 0 ? null : updatedUser;
-}
+};
 
 module.exports = {
     updateUserAsync

@@ -30,6 +30,6 @@ function verifyLoggedIn(request, response, next) {
 
         next();
     });
-}
+};
 
 module.exports = verifyLoggedIn;

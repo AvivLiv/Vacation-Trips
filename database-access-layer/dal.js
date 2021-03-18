@@ -17,7 +17,7 @@ function executeAsync(sql, values) {
             resolve(result);
         });
     });
-}
+};
 
 module.exports = {
     executeAsync

@@ -77,7 +77,7 @@ router.delete("/:vacationId", verifyAdmin, async (request, response) => {
     catch (err) {
         response.status(500).send(errorHelper.getError(err));
     }
-})
+});
 
 // Get image
 router.get("/image/:imageFileName", async (request, response) => {
@@ -89,6 +89,6 @@ router.get("/image/:imageFileName", async (request, response) => {
     catch (err) {
         response.status(500).send(errorHelper.getError(err));
     }
-})
+});
 
 module.exports = router;

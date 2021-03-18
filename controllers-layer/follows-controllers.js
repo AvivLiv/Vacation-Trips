@@ -14,7 +14,7 @@ router.get("/:vacationId", async (request, response) => {
     catch (err) {
         response.status(500).send(errorHelper.getError(err));
     }
-})
+});
 
 // get all follows
 router.get("/", verifyLogin, async (request, response) => {
@@ -25,7 +25,7 @@ router.get("/", verifyLogin, async (request, response) => {
     catch (err) {
         response.status(500).send(errorHelper.getError(err));
     }
-})
+});
 
 // Add follow
 router.post("/add-follow/:vacationId/:userId", verifyLogin, async (request, response) => {
@@ -38,7 +38,7 @@ router.post("/add-follow/:vacationId/:userId", verifyLogin, async (request, resp
     catch (err) {
         response.status(500).send(errorHelper.getError(err))
     }
-})
+});
 
 // Delete follow
 router.delete("/delete-follow/:vacationId/:userId", verifyLogin, async (request, response) => {
@@ -51,5 +51,6 @@ router.delete("/delete-follow/:vacationId/:userId", verifyLogin, async (request,
     catch (err) {
         response.status(500).send(errorHelper.getError(err))
     }
-})
+});
+
 module.exports = router;

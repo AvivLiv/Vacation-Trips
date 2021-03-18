@@ -15,7 +15,6 @@ server.use(express.json());
 server.use(fileUpload());
 server.use(express.static(path.join(__dirname, "./frontend")));
 
-
 server.use("/api/vacations", vacationsControllers);
 server.use("/api/auth", authControllers);
 server.use("/api/users", usersControllers);

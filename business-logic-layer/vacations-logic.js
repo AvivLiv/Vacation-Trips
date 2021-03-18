@@ -10,7 +10,7 @@ async function getAllVacationsAsync() {
      LEFT JOIN follows AS F  ON V.vacationId = F.vacationId GROUP BY V.vacationId ORDER BY Count(F.userId) DESC`;
     const vacations = await dal.executeAsync(sql);
     return vacations;
-}
+};
 
 // Get vacation by id
 async function getVacationByIdAsync(id) {
@@ -19,7 +19,7 @@ async function getVacationByIdAsync(id) {
      LEFT JOIN follows AS F  ON V.vacationId = F.vacationId  WHERE V.vacationId=${id}`;
     const vacations = await dal.executeAsync(sql);
     return vacations[0];
-}
+};
 
 // Add vacation
 async function addVacationAsync(vacation, image) {
@@ -35,11 +35,11 @@ async function addVacationAsync(vacation, image) {
        DEFAULT,'${vacation.destination}',?,
        '${vacation.fromDate}','${vacation.toDate}',
        ${vacation.price},'${newImageFileName}')`;
-    const info = await dal.executeAsync(sql,[vacation.description]);
+    const info = await dal.executeAsync(sql, [vacation.description]);
     vacation.vacationId = info.insertId;
     vacation.imageFileName = newImageFileName;
     return vacation;
-}
+};
 
 // Update vacation
 async function updateFullVacationAsync(vacation, image) {
@@ -60,10 +60,10 @@ async function updateFullVacationAsync(vacation, image) {
     toDate='${vacation.toDate}',price=${vacation.price},
     imageFileName='${vacation.imageFileName}' 
     WHERE vacationId=${vacation.vacationId}`;
-    const info = await dal.executeAsync(sql,[vacation.description]);
+    const info = await dal.executeAsync(sql, [vacation.description]);
     const vacationUpdated = await getVacationByIdAsync(vacation.vacationId);
     return !info.affectedRows ? 404 : vacationUpdated;
-}
+};
 
 // Delete vacation
 async function deleteVacationAsync(id) {
@@ -75,7 +75,7 @@ async function deleteVacationAsync(id) {
     if (await fs.existsSync(absolutePath)) await fs.unlinkSync(absolutePath);
     const sqlDelete = `DELETE FROM vacations WHERE vacationId=${id}`;
     await dal.executeAsync(sqlDelete);
-}
+};
 
 module.exports = {
     getAllVacationsAsync,

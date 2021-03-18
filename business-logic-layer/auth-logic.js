@@ -12,7 +12,7 @@ async function registerAsync(user) {
     delete user.password;
     user.token = jwtHelper.getNewToken({ user });
     return user;
-}
+};
 
 // Login
 async function loginAsync(userLogin) {
@@ -23,7 +23,7 @@ async function loginAsync(userLogin) {
     const user = users[0];
     user.token = jwtHelper.getNewToken({ user });
     return user;
-}
+};
 
 module.exports = {
     registerAsync,

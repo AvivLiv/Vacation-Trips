@@ -1,5 +1,6 @@
 const jwt=require("jsonwebtoken");
-
+ 
+// Make token for user
 const key="OnlyMaccabi";
 
 function getNewToken(payload){
